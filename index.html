@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohini Mohan - Automation Engineer Portfolio</title>
+    <title>Your Name - Personal Space</title>
     <style>
         * {
             margin: 0;
@@ -12,19 +12,21 @@
         }
 
         :root {
-            --cream: #fbebc2;
-            --golden: #f4ac2c;
-            --coral: #fb9684;
-            --silver: #e4ebeb;
-            --dark: #2c2c2c;
+            --warm-brown: #8B4513;
+            --light-brown: #D2B48C;
+            --peach: #FFCBA4;
+            --soft-yellow: #FFF8DC;
+            --cream: #FDF5E6;
+            --text-dark: #5D4037;
+            --shadow: rgba(139, 69, 19, 0.2);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--soft-yellow) 100%);
+            color: var(--text-dark);
             line-height: 1.6;
-            color: var(--dark);
-            background: linear-gradient(135deg, var(--cream) 0%, var(--silver) 100%);
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .container {
@@ -33,39 +35,28 @@
             padding: 0 20px;
         }
 
-        /* Navigation */
-        nav {
+        header {
+            background: rgba(255, 203, 164, 0.3);
+            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(251, 235, 194, 0.95);
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
-        nav.scrolled {
-            background: rgba(251, 235, 194, 0.98);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: var(--dark);
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
+            color: var(--warm-brown);
+            animation: fadeInDown 1s ease;
         }
 
         .nav-links {
@@ -76,10 +67,15 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-dark);
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--warm-brown);
+            transform: translateY(-2px);
         }
 
         .nav-links a::after {
@@ -89,7 +85,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--golden);
+            background: var(--peach);
             transition: width 0.3s ease;
         }
 
@@ -97,795 +93,606 @@
             width: 100%;
         }
 
-        /* Hero Section */
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .section {
+            margin: 4rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--golden), var(--coral));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(45deg, var(--peach), var(--soft-yellow));
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            margin-bottom: 4rem;
             animation: fadeInUp 1s ease;
         }
 
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--dark);
-            opacity: 0.8;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--warm-brown);
+            animation: bounceIn 1.2s ease;
             position: relative;
-            overflow: hidden;
+            display: inline-block;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--golden), var(--coral));
-            color: white;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--dark);
-            border: 2px solid var(--golden);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Automation Visual Elements */
-        .automation-visual {
-            position: relative;
-            width: 400px;
-            height: 400px;
-        }
-
-        .gear {
+        .animated-cat {
             position: absolute;
-            border-radius: 50%;
-            background: var(--golden);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .gear-1 {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 15%;
-            animation: rotateClockwise 8s linear infinite;
-        }
-
-        .gear-2 {
-            width: 100px;
-            height: 100px;
-            top: 40%;
-            right: 20%;
-            background: var(--coral);
-            animation: rotateCounterClockwise 6s linear infinite;
-        }
-
-        .gear-3 {
-            width: 60px;
-            height: 60px;
-            bottom: 25%;
-            left: 35%;
-            background: var(--silver);
-            color: var(--dark);
-            animation: rotateClockwise 10s linear infinite;
-        }
-
-        .data-flow {
-            position: absolute;
-            width: 3px;
-            height: 150px;
-            background: linear-gradient(to bottom, var(--golden), transparent);
-            top: 10%;
-            left: 50%;
-            animation: dataFlow 2s ease-in-out infinite;
-        }
-
-        .data-particles {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--coral);
-            border-radius: 50%;
-            animation: particleFloat 3s ease-in-out infinite;
-        }
-
-        .particle-1 { top: 15%; right: 30%; animation-delay: 0s; }
-        .particle-2 { bottom: 20%; left: 20%; animation-delay: 1s; }
-        .particle-3 { top: 60%; right: 15%; animation-delay: 2s; }
-
-        /* Sections */
-        section {
-            padding: 5rem 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
+            right: -80px;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: var(--dark);
-            position: relative;
+            animation: catFloat 3s ease-in-out infinite;
         }
 
-        .section-title::after {
-            content: '';
+        .animated-leaves {
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--golden), var(--coral));
-            border-radius: 2px;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
         }
 
-        /* About Section */
-        .about {
-            background: var(--cream);
+        .leaf {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: leafFall 8s linear infinite;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
+        .leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .leaf:nth-child(2) { left: 20%; animation-delay: 1s; font-size: 1.2rem; }
+        .leaf:nth-child(3) { left: 70%; animation-delay: 2s; }
+        .leaf:nth-child(4) { left: 80%; animation-delay: 3s; font-size: 1.3rem; }
+        .leaf:nth-child(5) { left: 40%; animation-delay: 4s; }
+        .leaf:nth-child(6) { left: 60%; animation-delay: 5s; font-size: 1.1rem; }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
         }
 
-        .about-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--golden), var(--coral));
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            background: var(--light-brown);
+            border: 5px solid var(--peach);
+            transition: transform 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            color: white;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
+            color: var(--warm-brown);
         }
 
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 3s ease-in-out infinite;
+        .profile-image:hover {
+            transform: scale(1.05) rotate(5deg);
         }
 
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--dark);
-        }
-
-        /* Skills Section */
-        .skills {
-            background: var(--silver);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card {
-            background: white;
+        .card {
+            background: rgba(255, 255, 255, 0.8);
             padding: 2rem;
             border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(244, 172, 44, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .skill-card:hover::before {
-            left: 100%;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .skill-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--golden), var(--coral));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: white;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        /* Experience Section */
-        .experience {
-            background: var(--cream);
-        }
-
-        .timeline {
-            position: relative;
-            margin-top: 3rem;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--golden), var(--coral));
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-left: 2rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 203, 164, 0.3);
             transition: all 0.3s ease;
         }
 
-        .timeline-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3rem;
-            top: 2rem;
-            width: 15px;
-            height: 15px;
-            background: var(--golden);
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--golden);
-        }
-
-        .job-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .company {
-            color: var(--coral);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .duration {
-            color: var(--golden);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .job-description {
-            list-style: none;
-            padding: 0;
-        }
-
-        .job-description li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-        }
-
-        .job-description li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--golden);
-            font-weight: bold;
-        }
-
-        /* Projects Section */
-        .projects {
-            background: var(--silver);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--golden), var(--coral));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-card:hover {
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 35px var(--shadow);
         }
 
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--golden), var(--coral));
+        .card h2 {
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .photo-item {
+            aspect-ratio: 1;
+            background: var(--light-brown);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--warm-brown);
             font-size: 3rem;
-            position: relative;
-            overflow: hidden;
         }
 
-        .project-image::after {
-            content: '';
-            position: absolute;
+        .photo-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .blog-post {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: rgba(210, 180, 140, 0.2);
+            border-radius: 10px;
+            border-left: 4px solid var(--peach);
+            transition: all 0.3s ease;
+        }
+
+        .blog-post:hover {
+            background: rgba(210, 180, 140, 0.3);
+            transform: translateX(5px);
+        }
+
+        .blog-post h3 {
+            color: var(--warm-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post .date {
+            color: var(--warm-brown);
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .resume-section {
+            margin: 2rem 0;
+        }
+
+        .resume-section h3 {
+            color: var(--warm-brown);
+            border-bottom: 2px solid var(--peach);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(255, 203, 164, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 203, 164, 0.3);
+            transform: translateX(10px);
+        }
+
+        .experience-item h4 {
+            color: var(--warm-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .experience-item .duration {
+            font-style: italic;
+            color: var(--warm-brown);
+            opacity: 0.8;
+        }
+
+        .add-btn {
+            background: linear-gradient(45deg, var(--peach), var(--soft-yellow));
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            color: var(--warm-brown);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: projectShimmer 4s ease-in-out infinite;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
         }
 
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .project-description {
-            color: var(--dark);
-            opacity: 0.8;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tag {
-            background: var(--golden);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .tech-tag:hover {
-            background: var(--coral);
-            transform: scale(1.05);
-        }
-
-        /* Resume Section */
-        .resume {
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: var(--cream);
-        }
-
-        .resume-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .education-section, .certifications-section {
-            background: white;
             padding: 2rem;
             border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            animation: slideIn 0.3s ease;
         }
 
-        .education-section::before, .certifications-section::before {
-            content: '';
+        .modal input, .modal textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 2px solid var(--light-brown);
+            border-radius: 8px;
+            background: var(--soft-yellow);
+            color: var(--text-dark);
+            font-family: inherit;
+        }
+
+        .modal input:focus, .modal textarea:focus {
+            outline: none;
+            border-color: var(--peach);
+            box-shadow: 0 0 10px rgba(255, 203, 164, 0.3);
+        }
+
+        .close-btn {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--golden), var(--coral));
-        }
-
-        .resume-section-title {
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
             font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
+            color: var(--warm-brown);
+            cursor: pointer;
         }
 
-        .education-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-        }
-
-        .degree {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .university {
-            color: var(--coral);
-            font-weight: 500;
-        }
-
-        .year {
-            color: var(--golden);
-            font-size: 0.9rem;
-        }
-
-        .download-resume {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .cert-list {
-            list-style: none;
-            padding-left: 1rem;
-        }
-
-        .cert-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.5;
-        }
-
-        .cert-list li::before {
-            content: '🏆';
-            position: absolute;
-            left: 0;
+        .floating-elements {
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
+        .floating-element {
+            position: absolute;
+            background: var(--peach);
             border-radius: 50%;
-            background: var(--golden);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
         }
 
-        .social-link:hover {
-            transform: translateY(-3px) scale(1.1);
-            background: var(--coral);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
         }
 
-        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         @keyframes fadeInUp {
-            from {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes catFloat {
+            0%, 100% { transform: translateY(-50%) rotate(0deg); }
+            50% { transform: translateY(-60%) rotate(5deg); }
+        }
+
+        @keyframes leafFall {
+            0% { 
+                transform: translateY(-100px) rotateZ(0deg);
                 opacity: 0;
-                transform: translateY(30px);
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { 
+                transform: translateY(400px) rotateZ(360deg);
+                opacity: 0;
             }
         }
 
-        @keyframes rotateClockwise {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes rotateCounterClockwise {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-        }
-
-        @keyframes dataFlow {
-            0%, 100% { opacity: 0.3; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(10px); }
-        }
-
-        @keyframes particleFloat {
-            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.7; }
-            50% { transform: translateY(-15px) scale(1.2); opacity: 1; }
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        @keyframes projectShimmer {
-            0%, 100% { left: -100%; }
-            50% { left: 100%; }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                gap: 1rem;
             }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
+            
+            .hero h1 {
+                font-size: 2rem;
             }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .automation-visual {
-                width: 300px;
-                height: 300px;
-            }
-
-            .timeline {
-                padding-left: 1rem;
-            }
-
-            .timeline-item {
-                margin-left: 1rem;
+            
+            .photo-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <div class="floating-elements"></div>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">Your Name</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#photos">Photos</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#resume">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
 
-   <div class="container">
-    <div class="nav-container">
-        <a href="#" class="logo">Rohini Mohan</a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
-     
+    <main class="container">
+        <section id="home" class="hero section visible">
+            <div class="profile-image">📸</div>
+            <h1>Welcome to My Cozy Corner</h1>
+            <p>A warm space where I share my thoughts, experiences, and creative journey. Make yourself comfortable and explore!</p>
+        </section>
+
+        <section id="photos" class="section">
+            <div class="card">
+                <h2>Photo Gallery</h2>
+                <button class="add-btn" onclick="showPhotoModal()">Add New Photo</button>
+                <div class="photo-grid" id="photoGrid">
+                    <div class="photo-item">🌅</div>
+                    <div class="photo-item">🌸</div>
+                    <div class="photo-item">☕</div>
+                    <div class="photo-item">📚</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section">
+            <div class="card">
+                <h2>Blog Posts</h2>
+                <button class="add-btn" onclick="showBlogModal()">Write New Post</button>
+                <div id="blogPosts">
+                    <article class="blog-post">
+                        <h3>Welcome to My Blog</h3>
+                        <div class="date">June 16, 2025</div>
+                        <p>This is my first blog post! I'm excited to share my thoughts and experiences with you. Stay tuned for more cozy content and personal reflections.</p>
+                    </article>
+                    <article class="blog-post">
+                        <h3>Creating Cozy Spaces</h3>
+                        <div class="date">June 15, 2025</div>
+                        <p>There's something magical about warm colors and soft lighting. Today I want to talk about how to create spaces that feel like a warm hug...</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="section">
+            <div class="card">
+                <h2>Resume</h2>
+                <div class="resume-section">
+                    <h3>Education</h3>
+                    <div class="experience-item">
+                        <h4>Your Degree</h4>
+                        <div class="company">University Name</div>
+                        <div class="duration">2017 - 2021</div>
+                        <p>Your educational background and any relevant details.</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h3>Skills</h3>
+                    <div class="experience-item">
+                        <p>• Web Development<br>
+                        • Photography<br>
+                        • Writing<br>
+                        • Design<br>
+                        • Add your own skills here</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Photo Modal -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('photoModal')">&times;</button>
+            <h3>Add New Photo</h3>
+            <input type="text" id="photoTitle" placeholder="Photo title...">
+            <input type="file" id="photoFile" accept="image/*">
+            <button class="add-btn" onclick="addPhoto()">Add Photo</button>
+        </div>
     </div>
-</div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hello, I'm Rohini Mohan</h1>
-                    <p>I'm an Engineer focused on automation & solutions that help teams collaborate, simplify processes, and turn data into smarter decisions.</p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
+    <!-- Blog Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('blogModal')">&times;</button>
+            <h3>Write New Blog Post</h3>
+            <input type="text" id="blogTitle" placeholder="Post title...">
+            <textarea id="blogContent" rows="6" placeholder="Write your thoughts..."></textarea>
+            <button class="add-btn" onclick="addBlogPost()">Publish Post</button>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Floating elements animation
+        function createFloatingElements() {
+            const container = document.querySelector('.floating-elements');
+            for (let i = 0; i < 6; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.width = (Math.random() * 20 + 10) + 'px';
+                element.style.height = element.style.width;
+                element.style.animationDelay = Math.random() * 20 + 's';
+                element.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                container.appendChild(element);
+            }
+        }
+
+        // Modal functions
+        function showPhotoModal() {
+            document.getElementById('photoModal').style.display = 'block';
+        }
+
+        function showBlogModal() {
+            document.getElementById('blogModal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function addPhoto() {
+            const title = document.getElementById('photoTitle').value;
+            const fileInput = document.getElementById('photoFile');
             
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="automation-visual">
-                        <div class="gear gear-1">⚙️</div>
-                        <div class="gear gear-2">🔧</div>
-                        <div class="gear gear-3">⚡</div>
-                        <div class="data-flow"></div>
-                        <div class="data-particles particle-1"></div>
-                        <div class="data-particles particle-2"></div>
-                        <div class="data-particles particle-3"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            if (title && fileInput.files[0]) {
+                const photoGrid = document.getElementById('photoGrid');
+                const newPhoto = document.createElement('div');
+                newPhoto.className = 'photo-item';
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    newPhoto.style.backgroundImage = `url(${e.target.result})`;
+                    newPhoto.style.backgroundSize = 'cover';
+                    newPhoto.style.backgroundPosition = 'center';
+                    newPhoto.innerHTML = '';
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+                
+                photoGrid.appendChild(newPhoto);
+                closeModal('photoModal');
+                
+                // Reset form
+                document.getElementById('photoTitle').value = '';
+                document.getElementById('photoFile').value = '';
+            }
+        }
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    🤖
-                </div>
-                <div class="about-text">
-<p>I'm based in India, I enjoy singing and playing the guitar, and spending time with my cat, Milo. I also love traveling and staying active </p>
+        function addBlogPost() {
+            const title = document.getElementById('blogTitle').value;
+            const content = document.getElementById('blogContent').value;
+            
+            if (title && content) {
+                const blogPosts = document.getElementById('blogPosts');
+                const newPost = document.createElement('article');
+                newPost.className = 'blog-post';
+                
+                const today = new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                newPost.innerHTML = `
+                    <h3>${title}</h3>
+                    <div class="date">${today}</div>
+                    <p>${content}</p>
+                `;
+                
+                blogPosts.insertBefore(newPost, blogPosts.firstChild);
+                closeModal('blogModal');
+                
+                // Reset form
+                document.getElementById('blogTitle').value = '';
+                document.getElementById('blogContent').value = '';
+            }
+        }
 
-                </div>
-            </div>
-        </div>
-    </section>
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🔧</div>
-                    <h3>Automation Tools</h3>
-                    <p>Google Apps Script, Blue Prism, Power Automate</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📊</div>
-                    <h3>Data </h3>
-                    <p>SQL, Tableau, Excel, Sheets, Smartsheets</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">☁️</div>
-                    <h3>Cloud Platforms</h3>
-                    <p>AWS Certified, Microsoft Azure</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">💻</div>
-                    <h3>Development</h3>
-                    <p> Python, HTML, CSS, REST APIs, Git, JavaScript</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        // Initialize floating elements
+        createFloatingElements();
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">📊</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Tableau Dashboards</h3>
-                        <p class="project-description">Created comprehensive customer analysis and sales dashboards, published to Tableau Public for data visualization and business insights.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Tableau</span>
-                            <span class="tech-tag">Data Visualization</span>
-                            <span class="tech-tag">Analytics</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">🎵</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Spotify Stats Analysis</h3>
-                        <p class="project-description">Created a comprehensive case study analyzing Spotify dataset using Matplotlib and public dataset from Kaggle for music streaming insights.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Matplotlib</span>
-                            <span class
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 203, 164, 0.9)';
+                header.style.boxShadow = '0 2px 20px rgba(139, 69, 19, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 203, 164, 0.3)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
